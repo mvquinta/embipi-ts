@@ -1,0 +1,74 @@
+[
+  {
+    "monthtwo": [
+      {
+        "id": 1,
+        "text": "First tip in month two"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month two"
+      }
+    ],
+    "monthfour": [
+      {
+        "id": 1,
+        "text": "First tip in month four"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month four"
+      }
+    ],
+    "monthsix": [
+      {
+        "id": 1,
+        "text": "First tip in month six"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month six"
+      }
+    ],
+    "monthnine": [
+      {
+        "id": 1,
+        "text": "First tip in month nine"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month nine"
+      }
+    ],
+    "monthtwelve": [
+      {
+        "id": 1,
+        "text": "First tip in month twelve"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month twelve"
+      }
+    ],
+    "montheighteen": [
+      {
+        "id": 1,
+        "text": "First tip in month eighteen"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month eighteen"
+      }
+    ],
+    "monthtwentyfour": [
+      {
+        "id": 1,
+        "text": "First tip in month tweenty four"
+      },
+      {
+        "id": 2,
+        "text": "Second tip in month tweenty four"
+      }
+    ]
+  }
+]

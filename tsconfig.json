@@ -4,6 +4,8 @@
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
         "skipLibCheck": true,
+        "sourceMap": true, //from prism docs
+        "outDir": "dist", //from prism docs
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
@@ -13,8 +15,17 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
-        "incremental": true
+        "incremental": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/components/*": ["components/*"],
+            "@/pages/*": ["pages/*"],
+            "@/lib/*": ["lib/*"],
+            "@/prisma/*": ["prisma/*"],
+            "@/public/*": ["public/*"],
+            "@/styles/*": ["styles/*"]
+        }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "types/**/*.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]
 }

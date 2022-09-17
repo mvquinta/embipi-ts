@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import EmbipiPage from './embipiPage'
+import EmbipiHome from '@/pages/embipiHome'
 
 const Home: NextPage = () => {
     return (
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
                     type='image/png'
                     href='/imgs/embipi_favicon.png'></link>
             </Head>
-            <EmbipiPage />
+            <EmbipiHome />
         </>
     )
 }
