@@ -10,18 +10,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Percentile {
+  id Int @id @default(autoincrement())
+  gender String
+  data Json  
+}
 
 model User {
   id            String    @id @default(cuid())
   name          String?
+  lastName      String?
   email         String?   @unique
-  username      String?   @unique
   emailVerified DateTime?
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
+  childs        Children[]
 }
 
 model VerificationToken {
@@ -59,4 +65,28 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model Children {
+  id       Int  @id @default(autoincrement())
+  author   User @relation(fields: [authorId], references: [id])
+  authorId String @unique
+  userBabyName String
+  userBabyAge String
+  userBabyGender String
+  userBabyMonths Int
+  userBabyHeight Int
+  userBabyWeight Int
+  userBabyHead Int
+  milestones Milestones[]
+}
+
+model Milestones {
+  id       Int  @id @default(autoincrement())
+  children   Children @relation(fields: [childrenId], references: [id])
+  childrenId Int @unique
+  milestones Json
+  updatedAt DateTime @updatedAt
+  tips Json
 }

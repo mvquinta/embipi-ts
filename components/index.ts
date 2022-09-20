@@ -1,6 +1,10 @@
+//Components
+//export { Loader } from './Loader'
+export { Loader } from '@/components/Loader'
+
 //Components Home
-export { Hero } from './Home/Hero'
-export { Features } from './Home/Features'
-export { About } from './Home/About'
-export { Cta } from './Home/Cta'
-export { Footer } from './Home/Footer'
+export { Hero } from '@/components/Home/Hero'
+export { Features } from '@/components/Home/Features'
+export { About } from '@/components/Home/About'
+export { Cta } from '@/components/Home/Cta'
+export { Footer } from '@/components/Home/Footer'
