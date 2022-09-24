@@ -48,7 +48,7 @@ const Onboarding: NextPage = () => {
     }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        let babyMonths = utils.ageInMonths(data.userBabyAge)        
+        let babyMonths = utils.ageInMonths(data.userBabyAge)
 
         const submit = async () => {
             await axios.post('/api/onboarding', { data, babyMonths })
@@ -225,7 +225,7 @@ const Onboarding: NextPage = () => {
                                         <input
                                             id='babyGenderMale'
                                             //name='userBabyGender'
-                                            className='peer hidden'                                            
+                                            className='peer hidden'
                                             type='radio'
                                             value='male'
                                             autoComplete='userBabyGender'
@@ -243,7 +243,7 @@ const Onboarding: NextPage = () => {
                                     <div>
                                         <input
                                             id='babyGenderFemale'
-                                            className='peer hidden'                                            
+                                            className='peer hidden'
                                             type='radio'
                                             autoComplete='userBabyGender'
                                             value='female'
