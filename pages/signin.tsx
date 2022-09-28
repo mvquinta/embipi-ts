@@ -32,7 +32,8 @@ export const getServerSideProps: GetServerSideProps = async (
     if (session && session?.user?.id) {
         return {
             redirect: {
-                destination: `/private/${session.user.id}`,
+                //destination: `/private/${session.user.id}`,
+                destination: `/private/${session.user.id}/dashboard`,
                 permanent: false,
             },
         }

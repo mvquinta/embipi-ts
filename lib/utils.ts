@@ -4,13 +4,16 @@
 */
 
 export const useUtils = () => {
-    const ageInMonths = (startDate: any) => {
+    const ageInMonths = (startDate: Date) => {
+        const startDateString = startDate.toLocaleString()
         const endDate = new Date()
 
         const monthDiff =
             endDate.getMonth() -
-            parseInt(startDate.split('-')[1]) +
-            12 * (endDate.getFullYear() - parseInt(startDate.split('-')[0]))
+            parseInt(startDateString.split('-')[1]) +
+            12 *
+                (endDate.getFullYear() -
+                    parseInt(startDateString.split('-')[0]))
         return monthDiff
     }
 

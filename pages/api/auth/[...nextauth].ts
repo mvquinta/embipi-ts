@@ -43,7 +43,6 @@ const options = {
             user: User
         }) => {
             session.user.id = user.id
-            session.user.lucas = true
             return Promise.resolve(session)
         },
     },

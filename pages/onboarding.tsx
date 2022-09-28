@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useUtils } from '@/lib/utils'
 import { useSession } from 'next-auth/react'
-
 import { Loader } from '@/components/index'
 
 type FormValues = {
@@ -42,18 +41,19 @@ const Onboarding: NextPage = () => {
 
     if (!loading && session && session.user.name) {
         router.push({
-            pathname: '/private/[id]',
+            //pathname: '/private/[id]',
+            pathname: '/private/[id]/dashboard',
             query: { id: session.user.id },
         })
     }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        let babyMonths = utils.ageInMonths(data.userBabyAge)        
+        let babyMonths = utils.ageInMonths(data.userBabyAge)
 
         const submit = async () => {
             await axios.post('/api/onboarding', { data, babyMonths })
             router.push({
-                pathname: '/private/[id]',
+                pathname: '/private/[id]/dashboard',
                 query: { id: session.user.id },
             })
         }
@@ -225,7 +225,7 @@ const Onboarding: NextPage = () => {
                                         <input
                                             id='babyGenderMale'
                                             //name='userBabyGender'
-                                            className='peer hidden'                                            
+                                            className='peer hidden'
                                             type='radio'
                                             value='male'
                                             autoComplete='userBabyGender'
@@ -243,7 +243,7 @@ const Onboarding: NextPage = () => {
                                     <div>
                                         <input
                                             id='babyGenderFemale'
-                                            className='peer hidden'                                            
+                                            className='peer hidden'
                                             type='radio'
                                             autoComplete='userBabyGender'
                                             value='female'
