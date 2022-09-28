@@ -5,9 +5,10 @@ import type {
 } from 'next'
 import { useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { MainLayout, Welcomebar } from '@/components/index'
+import { MainLayout } from '@/components/index'
 import { getUserProfile, getChild, getMilestones } from '@/lib/data'
 import { prisma } from '@/lib/prisma'
+import { PrivateDashboard } from '@/components/index'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context)
@@ -42,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 }
 
-const Private: NextPage<
+const Dashboard: NextPage<
     InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({
     user,
@@ -65,13 +66,10 @@ const Private: NextPage<
     return (
         <>
             <MainLayout user={user} session={session}>
-                {/* <Welcomebar /> */}
-                {/* <PrivateDashboard /> */}
-                <Welcomebar user={user} child={child} />
-                <h2>Private Dashboard component</h2>
+                <PrivateDashboard user={user} child={child} />
             </MainLayout>
         </>
     )
 }
 
-export default Private
+export default Dashboard

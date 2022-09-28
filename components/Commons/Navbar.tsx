@@ -32,7 +32,7 @@ export const Navbar: NextPage<Props> = ({ user, handleSidebar }) => {
         e: React.MouseEvent<HTMLAnchorElement>
     ) => {
         e.preventDefault()
-        router.push(`/private/${user?.name}/settings`)
+        router.push(`/private/${user?.id}/settings`)
     }
 
     function classNames(...classes: string[]): string {

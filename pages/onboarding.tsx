@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useUtils } from '@/lib/utils'
 import { useSession } from 'next-auth/react'
-
 import { Loader } from '@/components/index'
 
 type FormValues = {
@@ -42,7 +41,8 @@ const Onboarding: NextPage = () => {
 
     if (!loading && session && session.user.name) {
         router.push({
-            pathname: '/private/[id]',
+            //pathname: '/private/[id]',
+            pathname: '/private/[id]/dashboard',
             query: { id: session.user.id },
         })
     }
@@ -53,7 +53,7 @@ const Onboarding: NextPage = () => {
         const submit = async () => {
             await axios.post('/api/onboarding', { data, babyMonths })
             router.push({
-                pathname: '/private/[id]',
+                pathname: '/private/[id]/dashboard',
                 query: { id: session.user.id },
             })
         }

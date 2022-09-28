@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
-import { Session } from 'next-auth'
+import { UserProfile } from '../../types/types'
 
 import { Fragment } from 'react'
 import {
@@ -19,7 +19,7 @@ import {
 import { Dialog, Transition } from '@headlessui/react'
 
 type Props = {
-    session: Session | null
+    user: UserProfile
     sidebarOpen: boolean
     handleSidebar: () => Promise<void>
 }
@@ -27,7 +27,7 @@ type Props = {
 export const Sidebar: NextPage<Props> = ({
     sidebarOpen,
     handleSidebar,
-    session,
+    user,
 }) => {
     const router = useRouter()
     const activeRoute = router.route.split('/')[3]
@@ -35,19 +35,19 @@ export const Sidebar: NextPage<Props> = ({
     const navigation = [
         {
             name: 'Home',
-            href: `/private/${session?.user?.name}`,
+            href: `/private/${user?.id}/dashboard`,
             icon: BiHome,
             current: activeRoute === undefined ? true : false,
         },
         {
             name: 'Percentiles',
-            href: `/private/${session?.user?.name}/percentile`,
+            href: `/private/${user?.id}/percentile`,
             icon: BiLineChart,
             current: activeRoute === 'percentile' ? true : false,
         },
         {
             name: 'Milestones',
-            href: `/private/${session?.user?.name}/milestones`,
+            href: `/private/${user?.id}/milestones`,
             icon: BiListUl,
             current: activeRoute === 'milestones' ? true : false,
         },
@@ -67,7 +67,7 @@ export const Sidebar: NextPage<Props> = ({
     const secondaryNavigation = [
         {
             name: 'Settings',
-            href: `/private/${session?.user?.name}/settings`,
+            href: `/private/${user?.id}/settings`,
             icon: BiCog,
             current: activeRoute === 'settings' ? true : false,
         },
