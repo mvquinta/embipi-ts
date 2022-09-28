@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import { BiMenu, BiBell, BiChevronDown } from 'react-icons/bi'
 import { Menu, Transition } from '@headlessui/react'
 import type { NextPage } from 'next'
-import { User } from 'next-auth'
+import { UserProfile } from '../../types/types'
 
 type Props = {
-    user: User
+    user: UserProfile
     handleSidebar: () => Promise<void>
 }
 
@@ -70,7 +70,12 @@ export const Navbar: NextPage<Props> = ({ user, handleSidebar }) => {
                                 <Menu.Button className='max-w-xs bg-white rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50'>
                                     <span className='inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-500'>
                                         <span className='text-xl font-medium leading-none text-white'>
-                                            {user?.name![0].toUpperCase()}
+                                            {user?.name
+                                                ?.charAt(0)
+                                                .toUpperCase()}
+                                            {user?.lastName
+                                                ?.charAt(0)
+                                                .toUpperCase()}
                                         </span>
                                     </span>
                                     <span className='hidden ml-3 text-gray-700 text-sm font-medium lg:block'>

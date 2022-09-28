@@ -5,7 +5,7 @@ import type {
 } from 'next'
 import { useSession, getSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { MainLayout } from '@/components/index'
+import { MainLayout, Welcomebar } from '@/components/index'
 import { getUserProfile, getChild, getMilestones } from '@/lib/data'
 import { prisma } from '@/lib/prisma'
 
@@ -65,7 +65,9 @@ const Private: NextPage<
     return (
         <>
             <MainLayout user={user} session={session}>
+                {/* <Welcomebar /> */}
                 {/* <PrivateDashboard /> */}
+                <Welcomebar user={user} child={child} />
                 <h2>Private Dashboard component</h2>
             </MainLayout>
         </>
