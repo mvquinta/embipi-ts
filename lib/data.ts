@@ -36,8 +36,6 @@ export const getMilestones = async (
         },
         select: {
             milestones: true,
-            tips: true,
-            updatedAt: true,
         },
     })
 

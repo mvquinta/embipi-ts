@@ -45,11 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Dashboard: NextPage<
     InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({
-    user,
-    child,
-    milestones,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+> = ({ user, child, milestones }) => {
     const router = useRouter()
     const { data: session, status } = useSession()
 

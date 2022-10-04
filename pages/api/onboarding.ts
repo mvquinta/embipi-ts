@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma'
 
 import { getSession } from 'next-auth/react'
 import milestones from '@/lib/milestones.json'
-import milestonesTips from '@/lib/milestonesTips.json'
+//import milestonesTips from '@/lib/milestonesTips.json'
 
 const handler: NextApiHandler = async (req, res) => {
     const session = await getSession({ req })
@@ -53,7 +53,6 @@ const handler: NextApiHandler = async (req, res) => {
         await prisma.milestones.create({
             data: {
                 milestones: milestones[0],
-                tips: milestonesTips[0],
 
                 children: {
                     connect: { id: children[0].id },

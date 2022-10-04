@@ -87,6 +87,4 @@ model Milestones {
   children   Children @relation(fields: [childrenId], references: [id])
   childrenId Int @unique
   milestones Json
-  updatedAt DateTime @updatedAt
-  tips Json
 }
