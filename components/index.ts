@@ -12,6 +12,9 @@ export { PrivatePercentile } from '@/components/Private/PrivatePercentile'
 export { PrivateMilestones } from '@/components/Private/PrivateMilestones'
 export { PrivateSettings } from '@/components/Private/PrivateSettings'
 
+//Milestones
+export { Milestones } from '@/components/Milestones/index'
+
 //Components Home
 export { Hero } from '@/components/Home/Hero'
 export { Features } from '@/components/Home/Features'

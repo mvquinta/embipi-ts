@@ -2,6 +2,7 @@
  general costume hooks saved as general utilities.
  to be used whatever I might need them and also to help and separate concerns
 */
+import { UserProfile, UserChildren, UserMilestones } from '../types/types'
 
 export const useUtils = () => {
     const ageInMonths = (startDate: Date) => {
@@ -34,7 +35,7 @@ export const useUtils = () => {
         }
     }
 
-    const getMonthToShow = (child: any) => {
+    const getMonthToShow = (child: UserChildren) => {
         let monthToShow = null
         if (child) {
             switch (true) {
@@ -66,9 +67,18 @@ export const useUtils = () => {
         return monthToShow
     }
 
+    const formatDate = (date: Date) => {
+        const year = date.toLocaleString('default', { year: 'numeric' })
+        const month = date.toLocaleString('default', { month: '2-digit' })
+        const day = date.toLocaleString('default', { day: '2-digit' })
+        const fullDate = day + '/' + month + '/' + year
+        return fullDate
+    }
+
     return {
         ageInMonths,
         getPercentilValue,
         getMonthToShow,
+        formatDate,
     }
 }
