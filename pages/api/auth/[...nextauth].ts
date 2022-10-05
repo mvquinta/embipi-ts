@@ -1,4 +1,4 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
+import { NextApiHandler } from 'next'
 import NextAuth, { Session, User } from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'

@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 import TableMilestones from '@/components/Milestones/TableMilestones'
 import { UserChildren, UserMilestones } from '../../types/types'
 import { useUtils } from '@/lib/utils'

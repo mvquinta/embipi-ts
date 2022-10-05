@@ -66,11 +66,7 @@ const Milestones: NextPage<
     return (
         <>
             <MainLayout user={user} session={session}>
-                <PrivateMilestones
-                    user={user}
-                    child={child}
-                    milestones={milestones}
-                />
+                <PrivateMilestones child={child} milestones={milestones} />
             </MainLayout>
         </>
     )
