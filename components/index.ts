@@ -8,9 +8,15 @@ export { Welcomebar } from '@/components/Commons/Welcomebar'
 
 //Private
 export { PrivateDashboard } from '@/components/Private/PrivateDashboard'
-export { PrivatePercentile } from '@/components/Private/PrivatePercentile'
+export { PrivatePercentile } from '@/components/Private/PrivatePercentile/index'
 export { PrivateMilestones } from '@/components/Private/PrivateMilestones'
 export { PrivateSettings } from '@/components/Private/PrivateSettings'
+
+//Percentile
+export { PercentileCharts } from '@/components/Private/PrivatePercentile/PercentileCharts'
+export { Charts } from '@/components/Private/PrivatePercentile/Charts'
+export { LineChart } from '@/components/Private/PrivatePercentile/LineChart'
+export { PercentileFaqs } from '@/components/Private/PrivatePercentile/PercentileFaqs'
 
 //Milestones
 export { Milestones } from '@/components/Milestones/index'
