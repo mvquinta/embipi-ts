@@ -5,6 +5,7 @@ export { MainLayout } from '@/components/Commons/MainLayout'
 export { Navbar } from '@/components/Commons/Navbar'
 export { Sidebar } from '@/components/Commons/Sidebar'
 export { Welcomebar } from '@/components/Commons/Welcomebar'
+export { ModalAlert } from '@/components/Commons/ModalAlert'
 
 //Private
 export { PrivateDashboard } from '@/components/Private/PrivateDashboard'
