@@ -6,8 +6,6 @@ const handler: NextApiHandler = async (req, res) => {
     const session = await getSession({ req });
     if (!session) return res.end();
 
-    console.log('session', session);
-
     const user = await prisma.user.findUnique({
         where: {
             id: session.user.id,
