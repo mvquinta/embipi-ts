@@ -1,5 +1,5 @@
-import { getChild, getUserProfile, getMilestones } from '@/lib/data'
-import { Prisma } from '@prisma/client'
+import { getChild, getUserProfile, getMilestones, getPercentileValues } from '@/lib/data';
+import { Prisma } from '@prisma/client';
 
 // 1: Define a type that includes the relation to `Children`
 // const userWithChild = Prisma.validator<Prisma.UserArgs>()({
@@ -14,10 +14,61 @@ import { Prisma } from '@prisma/client'
 // 3: This type will include a user and all their childs
 // type UserWithChild = Prisma.UserGetPayload<typeof userWithChild>
 
-type UserChildren = Prisma.PromiseReturnType<typeof getChild>
+type UserChildren = Prisma.PromiseReturnType<typeof getChild>;
 
-type UserProfile = Prisma.PromiseReturnType<typeof getUserProfile>
+type UserProfile = Prisma.PromiseReturnType<typeof getUserProfile>;
 
-type UserMilestones = Prisma.PromiseReturnType<typeof getMilestones>
+type UserMilestones = Prisma.PromiseReturnType<typeof getMilestones>;
 
-export type { UserChildren, UserProfile, UserMilestones }
+type PercentileValues = Prisma.PromiseReturnType<typeof getPercentileValues>;
+
+interface PercentileCurves {
+    id: number;
+    gender: string;
+    data: {
+        height: {
+            curve0: Array<number>;
+            curve3: Array<number>;
+            curve15: Array<number>;
+            curve50: Array<number>;
+            curve85: Array<number>;
+            curve97: Array<number>;
+            curve99: Array<number>;
+        };
+        weight: {
+            curve0: Array<number>;
+            curve3: Array<number>;
+            curve15: Array<number>;
+            curve50: Array<number>;
+            curve85: Array<number>;
+            curve97: Array<number>;
+            curve99: Array<number>;
+        };
+        head: {
+            curve0: Array<number>;
+            curve3: Array<number>;
+            curve15: Array<number>;
+            curve50: Array<number>;
+            curve85: Array<number>;
+            curve97: Array<number>;
+            curve99: Array<number>;
+        };
+    };
+}
+
+interface MilestonesDone {
+    date: string;
+    id: number;
+    status: boolean;
+    text: string;
+    type: string;
+}
+
+export type {
+    UserChildren,
+    UserProfile,
+    UserMilestones,
+    PercentileValues,
+    PercentileCurves,
+    MilestonesDone,
+};

@@ -1,35 +1,26 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-export const getUserProfile = async (
-    id: string | undefined,
-    prisma: PrismaClient
-) => {
+export const getUserProfile = async (id: string | undefined, prisma: PrismaClient) => {
     const userProfile = await prisma.user.findUnique({
         where: {
             id: id,
         },
-    })
+    });
 
-    return userProfile
-}
+    return userProfile;
+};
 
-export const getChild = async (
-    id: string | undefined,
-    prisma: PrismaClient
-) => {
+export const getChild = async (id: string | undefined, prisma: PrismaClient) => {
     const child = await prisma.children.findMany({
         where: {
             authorId: id,
         },
-    })
+    });
 
-    return child
-}
+    return child;
+};
 
-export const getMilestones = async (
-    id: number | undefined,
-    prisma: PrismaClient
-) => {
+export const getMilestones = async (id: number | undefined, prisma: PrismaClient) => {
     const milestones = await prisma.milestones.findUnique({
         where: {
             childrenId: id,
@@ -37,7 +28,16 @@ export const getMilestones = async (
         select: {
             milestones: true,
         },
-    })
+    });
 
-    return milestones
-}
+    return milestones;
+};
+
+export const getPercentileValues = async (gender: string, prisma: PrismaClient) => {
+    const percentileValues = await prisma.percentile.findMany({
+        where: {
+            gender: gender,
+        },
+    });
+    return percentileValues;
+};

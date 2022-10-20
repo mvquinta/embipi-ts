@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { NextPage } from 'next';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -8,44 +8,31 @@ import {
     Title,
     Tooltip,
     Legend,
-} from 'chart.js'
-import { Line } from 'react-chartjs-2'
-import type { ChartData, ChartOptions } from 'chart.js'
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import type { ChartData, ChartOptions } from 'chart.js';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-)
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 interface LineProps {
-    options: ChartOptions<'line'>
-    data: ChartData<'line'>
+    options: ChartOptions<'line'>;
+    data: ChartData<'line'>;
 }
 
 interface MyLineProps extends LineProps {}
 
 type Props = {
-    babyName: string | null
-    babyMonths: any
-    curveValues: any
-    chartTitle: string
-}
+    babyName: string | null;
+    babyMonths: any;
+    curveValues: any;
+    chartTitle: string;
+};
 
-export const LineChart: NextPage<Props> = ({
-    babyName,
-    babyMonths,
-    curveValues,
-    chartTitle,
-}) => {
+export const LineChart: NextPage<Props> = ({ babyName, babyMonths, curveValues, chartTitle }) => {
     const labels = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
-    ]
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+        26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
+    ];
 
     const options: LineProps['options'] = {
         maintainAspectRatio: false,
@@ -67,12 +54,8 @@ export const LineChart: NextPage<Props> = ({
                     display: true,
                 },
                 display: true,
-                max: curveValues
-                    ? Math.round(curveValues.curve99[35] / 5) * 5
-                    : 0, //get last value from last curve to set Y max scale Math.round(x/5)*5 -> round up to a multiple of 5
-                min: curveValues
-                    ? Math.round(curveValues.curve0[0] / 5) * 5
-                    : 0, //get first value from first curve to set Y min scale Math.round(x/5)*5 -> round up to a multiple of 5
+                max: curveValues ? Math.round(curveValues.curve99[35] / 5) * 5 : 0, //get last value from last curve to set Y max scale Math.round(x/5)*5 -> round up to a multiple of 5
+                min: curveValues ? Math.round(curveValues.curve0[0] / 5) * 5 : 0, //get first value from first curve to set Y min scale Math.round(x/5)*5 -> round up to a multiple of 5
                 beginAtZero: true,
                 ticks: {
                     display: true,
@@ -83,7 +66,7 @@ export const LineChart: NextPage<Props> = ({
                 },
             },
         },
-    }
+    };
 
     const data: LineProps['data'] = {
         labels,
@@ -145,12 +128,12 @@ export const LineChart: NextPage<Props> = ({
                 pointRadius: 0,
             },
         ],
-    }
+    };
 
     return (
         // <div className="relative w-full h-full">
-        <div className='w-full h-full'>
+        <div className="w-full h-full">
             <Line options={options} data={data} />
         </div>
-    )
-}
+    );
+};
