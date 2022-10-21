@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { useSession, getSession } from 'next-auth/react';
 import { getUserProfile, getChild } from '@/lib/data';
 import { prisma } from '@/lib/prisma';
@@ -52,6 +53,10 @@ const Percentile: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
 
     return (
         <>
+            <Head>
+                <title>embipi percentile</title>
+                <meta name="embipi percentile" content="Page with percentile charts" />
+            </Head>
             <MainLayout user={user} session={session}>
                 <PrivatePercentile child={child} />
             </MainLayout>
