@@ -57,10 +57,6 @@ const Milestones: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
         router.push('/');
     }
 
-    if (session && !session.user.name) {
-        router.push('/onboarding');
-    }
-
     return (
         <>
             <MainLayout user={user} session={session}>
