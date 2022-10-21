@@ -30,10 +30,6 @@ type CheckedGender = {
 };
 
 export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
-    // const [checked, setChecked] = useState<CheckedGender>({
-    //     male: child[0]?.userBabyGender === 'male' || null,
-    //     female: child[0]?.userBabyGender === 'female' || null,
-    // });
     const [checked, setChecked] = useState<CheckedGender | null>(
         child
             ? {
@@ -330,7 +326,7 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                 type="text"
                                                 autoComplete="userBabyName"
                                                 className="mt-1 focus:ring-teal-500 focus:border-teal-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                                placeholder={child[0].userBabyName ?? null}
+                                                placeholder={child ? child[0]?.userBabyName : ''}
                                                 {...register('userBabyName', {
                                                     minLength: {
                                                         value: 2,
@@ -416,7 +412,9 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                             //name='userBabyAge'
                                                             type="text"
                                                             autoComplete="userBabyAge"
-                                                            placeholder={child[0].userBabyAge ?? ''}
+                                                            placeholder={
+                                                                child ? child[0]?.userBabyAge : ''
+                                                            }
                                                             onFocus={(e) => {
                                                                 e.currentTarget.type = 'date';
                                                                 e.currentTarget.focus();
@@ -451,8 +449,9 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                             id="userBabyHeight"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                                             placeholder={
-                                                                child[0].userBabyHeight.toString() ??
-                                                                null
+                                                                child
+                                                                    ? child[0].userBabyHeight.toString()
+                                                                    : ''
                                                             }
                                                             aria-describedby="user-Baby-Height"
                                                             {...register('userBabyHeight', {
@@ -495,8 +494,9 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                             id="userBabyWeight"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                                             placeholder={
-                                                                child[0]?.userBabyWeight.toString() ??
-                                                                null
+                                                                child
+                                                                    ? child[0]?.userBabyWeight.toString()
+                                                                    : ''
                                                             }
                                                             aria-describedby="user-Baby-Weight"
                                                             {...register('userBabyWeight', {
@@ -540,8 +540,9 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                             id="userBabyHead"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                                             placeholder={
-                                                                child[0]?.userBabyHead.toString() ??
-                                                                null
+                                                                child
+                                                                    ? child[0]?.userBabyHead.toString()
+                                                                    : ''
                                                             }
                                                             aria-describedby="user-Baby-Head"
                                                             {...register('userBabyHead', {
