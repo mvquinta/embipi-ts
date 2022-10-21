@@ -6,6 +6,7 @@ export { Navbar } from '@/components/Commons/Navbar';
 export { Sidebar } from '@/components/Commons/Sidebar';
 export { Welcomebar } from '@/components/Commons/Welcomebar';
 export { ModalAlert } from '@/components/Commons/ModalAlert';
+export { Favicon } from '@/components/Commons/Favicon';
 
 //Private
 export { PrivateDashboard } from '@/components/Private/PrivateDashboard';

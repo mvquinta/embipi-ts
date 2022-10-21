@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { useSession, getSession } from 'next-auth/react';
 import { getUserProfile, getChild } from '@/lib/data';
 import { prisma } from '@/lib/prisma';
@@ -52,6 +53,13 @@ const Settings: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>>
 
     return (
         <>
+            <Head>
+                <title>embipi settings</title>
+                <meta
+                    name="embipi settings"
+                    content="Page settings to edit account and baby information"
+                />
+            </Head>
             <MainLayout user={user} session={session}>
                 <PrivateSettings user={user} child={child} />
             </MainLayout>

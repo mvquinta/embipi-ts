@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { useSession, getSession } from 'next-auth/react';
 import { getUserProfile, getChild, getMilestones } from '@/lib/data';
 import { prisma } from '@/lib/prisma';
@@ -59,6 +60,13 @@ const Milestones: NextPage<InferGetServerSidePropsType<typeof getServerSideProps
 
     return (
         <>
+            <Head>
+                <title>embipi milestones</title>
+                <meta
+                    name="embipi milestones"
+                    content="Page with a list of all milestones for the baby to achieve"
+                />
+            </Head>
             <MainLayout user={user} session={session}>
                 <PrivateMilestones child={child} milestones={milestones} />
             </MainLayout>

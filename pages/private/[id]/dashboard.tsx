@@ -1,4 +1,5 @@
 import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
 import { useSession, getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { MainLayout } from '@/components/index';
@@ -64,6 +65,13 @@ const Dashboard: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>
 
     return (
         <>
+            <Head>
+                <title>embipi dashboard</title>
+                <meta
+                    name="embipi dashboard"
+                    content="Page with a short and resumed general information"
+                />
+            </Head>
             <MainLayout user={user} session={session}>
                 <PrivateDashboard
                     user={user}
