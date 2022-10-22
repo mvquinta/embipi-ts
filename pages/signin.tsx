@@ -1,16 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import type { NextPage, GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { FormValues } from 'types/types';
+
 import { Session } from 'next-auth';
 import { getSession, getProviders, signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Loader } from '@/components/index';
 import { MdLock } from 'react-icons/md';
-
-type FormValues = {
-    email: string;
-};
 
 export const getServerSideProps: GetServerSideProps = async (
     context: GetServerSidePropsContext,

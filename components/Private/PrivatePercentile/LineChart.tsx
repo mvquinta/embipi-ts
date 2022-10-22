@@ -19,8 +19,6 @@ interface LineProps {
     data: ChartData<'line'>;
 }
 
-interface MyLineProps extends LineProps {}
-
 type Props = {
     babyName: string | null;
     babyMonths: any;

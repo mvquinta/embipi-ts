@@ -1,18 +1,18 @@
 import { getChild, getUserProfile, getMilestones, getPercentileValues } from '@/lib/data';
 import { Prisma } from '@prisma/client';
 
-// 1: Define a type that includes the relation to `Children`
-// const userWithChild = Prisma.validator<Prisma.UserArgs>()({
-//     include: { childs: true },
-// })
+/* 1: Define a type that includes the relation to `Children`
+const userWithChild = Prisma.validator<Prisma.UserArgs>()({
+    include: { childs: true },
+})
 
-// 2: Define a type that only contains a subset of the scalar fields
-// const userPersonalData = Prisma.validator<Prisma.UserArgs>()({
-//     select: { email: true, name: true },
-// })
+2: Define a type that only contains a subset of the scalar fields
+const userPersonalData = Prisma.validator<Prisma.UserArgs>()({
+    select: { email: true, name: true },
+})
 
-// 3: This type will include a user and all their childs
-// type UserWithChild = Prisma.UserGetPayload<typeof userWithChild>
+3: This type will include a user and all their childs
+type UserWithChild = Prisma.UserGetPayload<typeof userWithChild> */
 
 type UserChildren = Prisma.PromiseReturnType<typeof getChild>;
 
@@ -21,6 +21,23 @@ type UserProfile = Prisma.PromiseReturnType<typeof getUserProfile>;
 type UserMilestones = Prisma.PromiseReturnType<typeof getMilestones>;
 
 type PercentileValues = Prisma.PromiseReturnType<typeof getPercentileValues>;
+
+type FormValues = {
+    userName: string;
+    lastName: string;
+    email: string;
+    userBabyName: string;
+    userBabyGender: string;
+    userBabyAge: Date | string;
+    userBabyHeight: number | string;
+    userBabyWeight: number | string;
+    userBabyHead: number | string;
+};
+
+type CheckedGender = {
+    male: boolean;
+    female: boolean;
+};
 
 interface PercentileCurves {
     id: number;
@@ -56,6 +73,14 @@ interface PercentileCurves {
     };
 }
 
+interface ActiveMilestone {
+    id: number;
+    date: null | string;
+    text: string;
+    type: string;
+    status: boolean;
+}
+
 interface MilestonesDone {
     date: string;
     id: number;
@@ -69,6 +94,9 @@ export type {
     UserProfile,
     UserMilestones,
     PercentileValues,
+    FormValues,
+    CheckedGender,
     PercentileCurves,
+    ActiveMilestone,
     MilestonesDone,
 };

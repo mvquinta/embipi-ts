@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import TableMilestones from '@/components/Milestones/TableMilestones';
-import { UserChildren, UserMilestones } from '../../types/types';
+import { UserChildren, UserMilestones, ActiveMilestone } from 'types/types';
 import { useUtils } from '@/lib/utils';
 
 type Props = {
@@ -10,20 +10,10 @@ type Props = {
     milestones: UserMilestones;
 };
 
-interface ActiveMilestone {
-    id: number;
-    date: null | string;
-    text: string;
-    type: string;
-    status: boolean;
-}
-
-interface ActiveMilestoneArray extends Array<ActiveMilestone> {}
-
 export const Milestones: NextPage<Props> = ({ child, milestones }) => {
     const utils = useUtils();
     const [monthToShow, setMonthToShow] = useState(utils.getMonthToShow(child) as string);
-    const [activeMilestones, setActiveMilestones] = useState<ActiveMilestoneArray | null>(null);
+    const [activeMilestones, setActiveMilestones] = useState<ActiveMilestone[] | null>(null);
 
     useEffect(() => {
         const milestonesObj = milestones?.milestones as object;
@@ -75,7 +65,7 @@ export const Milestones: NextPage<Props> = ({ child, milestones }) => {
     return (
         <>
             <TableMilestones
-                activeMilestones={activeMilestones as ActiveMilestoneArray}
+                activeMilestones={activeMilestones as ActiveMilestone[]}
                 handleUpdateMilestoneStatus={handleUpdateMilestoneStatus}
                 handleMonthDropDown={handleMonthDropDown}
                 activeMonthToShow={monthToShow}

@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { UserProfile, UserChildren } from 'types/types';
+import { UserProfile, UserChildren, FormValues, CheckedGender } from 'types/types';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -10,23 +10,6 @@ import { Loader, ModalAlert } from '@/components/index';
 type Props = {
     user: UserProfile;
     child: UserChildren;
-};
-
-type FormValues = {
-    userName: string;
-    lastName: string;
-    email: string;
-    userBabyName: string;
-    userBabyGender: string;
-    userBabyAge: Date | string;
-    userBabyHeight: number | string;
-    userBabyWeight: number | string;
-    userBabyHead: number | string;
-};
-
-type CheckedGender = {
-    male: boolean;
-    female: boolean;
 };
 
 export const PrivateSettings: NextPage<Props> = ({ user, child }) => {

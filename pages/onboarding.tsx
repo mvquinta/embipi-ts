@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { FormValues } from 'types/types';
 import Head from 'next/head';
 import Image from 'next/image';
 import axios from 'axios';
@@ -7,17 +8,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useUtils } from '@/lib/utils';
 import { useSession } from 'next-auth/react';
 import { Loader } from '@/components/index';
-
-type FormValues = {
-    userName: string;
-    lastName: string;
-    userBabyName: string;
-    userBabyGender: string;
-    userBabyAge: Date;
-    userBabyHeight: number;
-    userBabyWeight: number;
-    userBabyHead: number;
-};
 
 const Onboarding: NextPage = () => {
     const { data: session, status } = useSession();
@@ -41,14 +31,13 @@ const Onboarding: NextPage = () => {
 
     if (!loading && session && session.user.name) {
         router.push({
-            //pathname: '/private/[id]',
             pathname: '/private/[id]/dashboard',
             query: { id: session.user.id },
         });
     }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        let babyMonths = utils.ageInMonths(data.userBabyAge);
+        let babyMonths = utils.ageInMonths(data.userBabyAge as Date);
 
         const submit = async () => {
             await axios.post('/api/onboarding', { data, babyMonths });

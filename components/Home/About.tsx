@@ -1,12 +1,12 @@
-import React from 'react'
-import Image from 'next/image'
-import embipiC from '/public/imgs/EmbipiBaby_E.svg'
-import embipiF from '/public/imgs/EmbipiBaby_F.svg'
+import { NextPage } from 'next';
+import Image from 'next/image';
+import embipiC from '/public/imgs/EmbipiBaby_E.svg';
+import embipiF from '/public/imgs/EmbipiBaby_F.svg';
 
 interface Faqs {
-    id: number
-    question: string
-    answer: string
+    id: number;
+    question: string;
+    answer: string;
 }
 
 const faqs: Faqs[] = [
@@ -30,7 +30,7 @@ const faqs: Faqs[] = [
         question: 'Can I try it first?',
         answer: 'Of course, you can check out the demo version with some mock data and interact with our dashboard and tools. ',
     },
-]
+];
 
 const devFaqs: Faqs[] = [
     {
@@ -53,34 +53,26 @@ const devFaqs: Faqs[] = [
         question: 'Want to follow and know more?',
         answer: "I'm developing embipi in my free time while building in public. I'm posting my small steps on Twitter. If you are curious stop by and follow me. You can also check my github repo if you want to look at the code I've been writing.",
     },
-]
+];
 
-export const About: React.FC = () => {
+export const About: NextPage = () => {
     return (
         <>
-            <div
-                className='max-w-7xl mx-auto py-14 px-4 sm:px-6 lg:px-8'
-                id='about'>
-                <h2 className='w-full text-4xl font-extrabold leading-9 ml-0 md:ml-5 text-teal-700'>
+            <div className="max-w-7xl mx-auto py-14 px-4 sm:px-6 lg:px-8" id="about">
+                <h2 className="w-full text-4xl font-extrabold leading-9 ml-0 md:ml-5 text-teal-700">
                     So, what about embipi?
                 </h2>
-                <div className='w-full flex flex-col md:flex-row justify-center items-center'>
-                    <div className='mt-10'>
-                        <Image
-                            className=''
-                            src={embipiC}
-                            alt='image kid with waving hand'
-                        />
+                <div className="w-full flex flex-col md:flex-row justify-center items-center">
+                    <div className="mt-10">
+                        <Image className="" src={embipiC} alt="image kid with waving hand" />
                     </div>
-                    <dl className='w-full md:w-2/3 pl-0 md:pl-10'>
+                    <dl className="w-full md:w-2/3 pl-0 md:pl-10">
                         {faqs.map((faq) => (
-                            <div className='relative' key={faq.id}>
-                                <dt className='mb-4'>
-                                    <h3 className='text-xl font-semibold'>
-                                        {faq.question}
-                                    </h3>
+                            <div className="relative" key={faq.id}>
+                                <dt className="mb-4">
+                                    <h3 className="text-xl font-semibold">{faq.question}</h3>
                                 </dt>
-                                <dd className='mb-8 pr-0 md:pr-28'>
+                                <dd className="mb-8 pr-0 md:pr-28">
                                     <p>{faq.answer}</p>
                                 </dd>
                             </div>
@@ -89,34 +81,32 @@ export const About: React.FC = () => {
                 </div>
             </div>
 
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' id='dev'>
-                <h2 className='w-full text-4xl font-extrabold leading-9 pr-4 md:pr-28 text-teal-700 text-right mb-8'>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="dev">
+                <h2 className="w-full text-4xl font-extrabold leading-9 pr-4 md:pr-28 text-teal-700 text-right mb-8">
                     ...and what about development and coding?
                 </h2>
-                <div className='w-full flex flex-col md:flex-row justify-center items-center'>
-                    <dl className='w-full md:w-2/3 pl-0 md:pl-10'>
+                <div className="w-full flex flex-col md:flex-row justify-center items-center">
+                    <dl className="w-full md:w-2/3 pl-0 md:pl-10">
                         {devFaqs.map((faq) => (
-                            <div className='relative' key={faq.id}>
-                                <dt className='mb-4'>
-                                    <h3 className='text-xl font-semibold'>
-                                        {faq.question}
-                                    </h3>
+                            <div className="relative" key={faq.id}>
+                                <dt className="mb-4">
+                                    <h3 className="text-xl font-semibold">{faq.question}</h3>
                                 </dt>
-                                <dd className='mb-16'>
+                                <dd className="mb-16">
                                     <p>{faq.answer}</p>
                                 </dd>
                             </div>
                         ))}
                     </dl>
-                    <div className='mt-0 md:mt-10'>
+                    <div className="mt-0 md:mt-10">
                         <Image
-                            className=''
+                            className=""
                             src={embipiF}
-                            alt='image kid smiling with pile of books beside him'
+                            alt="image kid smiling with pile of books beside him"
                         />
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
