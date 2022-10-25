@@ -160,10 +160,10 @@ export const MilestonesAchievedTable: NextPage<Props> = ({ milestones }) => {
                                         <div className="text-xs font-semibold text-teal-600">
                                             {getMonth(mile.id)}
                                         </div>
-                                        <div className="mt-1 flex flex-col text-gray-500 sm:block md:hidden">
+                                        <div className="mt-1 text-gray-500 sm:block md:hidden">
                                             <span>{mile.type}</span>
                                         </div>
-                                        <div className="mt-1 flex flex-col text-gray-500 sm:block md:hidden">
+                                        <div className="mt-1 text-gray-500 sm:block md:hidden">
                                             <span>{mile.date}</span>
                                         </div>
                                         {mileIdx !== 0 ? (
