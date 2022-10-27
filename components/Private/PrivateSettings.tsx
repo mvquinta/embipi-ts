@@ -59,19 +59,19 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
         if (data.userBabyName === '') {
             data.userBabyName = child[0].userBabyName;
         }
-        if (data.userBabyAge === '') {
-            data.userBabyAge = child[0].userBabyAge;
+        if (data.userBabyBirth === '') {
+            data.userBabyBirth = child[0].userBabyBirth;
         }
         if (data.userBabyGender === '') {
             data.userBabyGender = child[0].userBabyGender;
         }
-        if (data.userBabyHeight === '') {
+        if (data.userBabyHeight === 0) {
             data.userBabyHeight = child[0].userBabyHeight;
         }
-        if (data.userBabyWeight === '') {
+        if (data.userBabyWeight === 0) {
             data.userBabyWeight = child[0].userBabyWeight;
         }
-        if (data.userBabyHead === '') {
+        if (data.userBabyHead === 0) {
             data.userBabyHead = child[0].userBabyHead;
         }
 
@@ -79,7 +79,7 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
     };
 
     const submitForm: SubmitHandler<FormValues> = async (values) => {
-        let babyMonths = utils.ageInMonths(values.userBabyAge as Date);
+        let babyMonths = utils.ageInMonths(values.userBabyBirth as Date);
 
         async function updateSettings() {
             try {
@@ -99,16 +99,6 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
         }
 
         updateSettings();
-        // const res = await axios.put('/api/settings/', {
-        //     sessionId,
-        //     values,
-        //     babyMonths,
-        // });
-
-        // if (res.status < 300) {
-        //     refreshData();
-        //     handleCancel();
-        // }
     };
 
     const refreshData = () => {
@@ -118,16 +108,24 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
 
     const handleCancel = () => {
         reset({
-            userName: '',
-            lastName: '',
-            email: '',
-            userBabyName: '',
-            userBabyGender: '',
-            userBabyAge: '',
-            userBabyHeight: '',
-            userBabyWeight: '',
-            userBabyHead: '',
+            userName: user ? (user.name as string) : '',
+            lastName: user ? (user.lastName as string) : '',
+            email: user ? (user.email as string) : '',
+            userBabyName: child ? child[0].userBabyName : '',
+            //userBabyGender: setChecked,
+            userBabyBirth: child ? child[0].userBabyBirth : '',
+            userBabyHeight: child ? child[0].userBabyHeight : 0,
+            userBabyWeight: child ? child[0].userBabyWeight : 0,
+            userBabyHead: child ? child[0].userBabyHead : 0,
         });
+        setChecked(
+            child
+                ? {
+                      male: child[0]?.userBabyGender === 'male',
+                      female: child[0]?.userBabyGender === 'female',
+                  }
+                : null,
+        );
     };
 
     const handleOpenDeleteModal = () => {
@@ -186,11 +184,10 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                             </label>
                                             <input
                                                 id="userName"
-                                                //name='userName'
                                                 type="text"
                                                 autoComplete={user?.name ?? ''}
                                                 className="mt-1 focus:ring-teal-500 focus:border-teal-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                                placeholder={user?.name ?? ''}
+                                                defaultValue={user?.name ?? ''}
                                                 {...register('userName', {
                                                     minLength: {
                                                         value: 2,
@@ -223,11 +220,10 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                             </label>
                                             <input
                                                 id="lastName"
-                                                //name='lastName'
                                                 type="text"
                                                 autoComplete={user?.lastName ?? ''}
                                                 className="mt-1 focus:ring-teal-500 focus:border-teal-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                                placeholder={user?.lastName ?? ''}
+                                                defaultValue={user?.lastName ?? ''}
                                                 {...register('lastName', {
                                                     minLength: {
                                                         value: 2,
@@ -260,11 +256,10 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                             </label>
                                             <input
                                                 id="email-address"
-                                                //name='email'
                                                 type="email"
                                                 autoComplete={user?.email ?? ''}
                                                 className="mt-1 focus:ring-teal-500 focus:border-teal-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                                placeholder={user?.email ?? ''}
+                                                defaultValue={user?.email ?? ''}
                                                 {...register('email', {
                                                     pattern: {
                                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -305,11 +300,10 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                             </label>
                                             <input
                                                 id="userBabyName"
-                                                //name='userBabyName'
                                                 type="text"
                                                 autoComplete="userBabyName"
                                                 className="mt-1 focus:ring-teal-500 focus:border-teal-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                                placeholder={child ? child[0]?.userBabyName : ''}
+                                                defaultValue={child ? child[0]?.userBabyName : ''}
                                                 {...register('userBabyName', {
                                                     minLength: {
                                                         value: 2,
@@ -342,7 +336,6 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                     <div>
                                                         <input
                                                             id="babyGenderMale"
-                                                            //name='userBabyGender'
                                                             className="peer hidden"
                                                             checked={child ? checked?.male : false}
                                                             type="radio"
@@ -362,7 +355,9 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                         <input
                                                             id="babyGenderFemale"
                                                             className="peer hidden"
-                                                            checked={checked?.female ?? false}
+                                                            checked={
+                                                                child ? checked?.female : false
+                                                            }
                                                             type="radio"
                                                             value="female"
                                                             {...register('userBabyGender', {
@@ -391,24 +386,22 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
 
                                                     <div>
                                                         <input
-                                                            id="userBabyAge"
-                                                            //name='userBabyAge'
+                                                            id="userBabyBirth"
                                                             type="text"
-                                                            autoComplete="userBabyAge"
-                                                            placeholder={
-                                                                child ? child[0]?.userBabyAge : ''
+                                                            autoComplete="userBabyBirth"
+                                                            defaultValue={
+                                                                child ? child[0]?.userBabyBirth : ''
                                                             }
                                                             onFocus={(e) => {
                                                                 e.currentTarget.type = 'date';
                                                                 e.currentTarget.focus();
                                                             }}
-                                                            //onBlur={(e) => (e.currentTarget.type = "text")}
                                                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm mt-2"
-                                                            {...register('userBabyAge')}
+                                                            {...register('userBabyBirth')}
                                                         />
-                                                        {errors.userBabyAge && (
+                                                        {errors.userBabyBirth && (
                                                             <span className="text-red-500">
-                                                                {errors.userBabyAge.message}
+                                                                {errors.userBabyBirth.message}
                                                             </span>
                                                         )}
                                                     </div>
@@ -428,19 +421,19 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                     <div className="mt-1 relative rounded-md shadow-sm">
                                                         <input
                                                             type="number"
-                                                            //name='userBabyHeight'
                                                             id="userBabyHeight"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                                                            placeholder={
+                                                            defaultValue={
                                                                 child
                                                                     ? child[0].userBabyHeight.toString()
                                                                     : ''
                                                             }
+                                                            step="0.1"
                                                             aria-describedby="user-Baby-Height"
                                                             {...register('userBabyHeight', {
                                                                 maxLength: {
-                                                                    value: 3,
-                                                                    message: 'Max 3 numbers',
+                                                                    value: 5,
+                                                                    message: 'Max 5 chars',
                                                                 },
                                                                 minLength: {
                                                                     value: 2,
@@ -473,19 +466,19 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                     <div className="mt-1 relative rounded-md shadow-sm">
                                                         <input
                                                             type="number"
-                                                            //name='userBabyWeight'
                                                             id="userBabyWeight"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                                                            placeholder={
+                                                            defaultValue={
                                                                 child
                                                                     ? child[0]?.userBabyWeight.toString()
                                                                     : ''
                                                             }
+                                                            step="0.1"
                                                             aria-describedby="user-Baby-Weight"
                                                             {...register('userBabyWeight', {
                                                                 maxLength: {
-                                                                    value: 2,
-                                                                    message: 'Max 2 numbers',
+                                                                    value: 4,
+                                                                    message: 'Max 3 numbers',
                                                                 },
                                                                 minLength: {
                                                                     value: 1,
@@ -519,19 +512,19 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
                                                     <div className="mt-1 relative rounded-md shadow-sm">
                                                         <input
                                                             type="number"
-                                                            //name='userBabyHead'
                                                             id="userBabyHead"
                                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                                                            placeholder={
+                                                            defaultValue={
                                                                 child
                                                                     ? child[0]?.userBabyHead.toString()
                                                                     : ''
                                                             }
+                                                            step="0.1"
                                                             aria-describedby="user-Baby-Head"
                                                             {...register('userBabyHead', {
                                                                 maxLength: {
-                                                                    value: 3,
-                                                                    message: 'Max 3 numbers',
+                                                                    value: 5,
+                                                                    message: 'Max 5 chars',
                                                                 },
                                                                 minLength: {
                                                                     value: 2,

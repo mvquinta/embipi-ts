@@ -2,7 +2,8 @@
  general costume hooks saved as general utilities.
  to be used whatever I might need them and also to help and separate concerns
 */
-import { UserProfile, UserChildren, UserMilestones } from '../types/types';
+import { Prisma } from '@prisma/client';
+import { UserChildren } from 'types/types';
 
 export const useUtils = () => {
     const ageInMonths = (startDate: Date) => {
@@ -16,12 +17,12 @@ export const useUtils = () => {
         return monthDiff;
     };
 
-    const getPercentilValue = (submitedAge: number, submitedPercentil: number) => {
+    const getPercentilValue = (submitedAge: number, submitedPercentil: Prisma.Decimal | number) => {
         const percentilValueHolder: Array<number | null> = [];
         if (
             //checks if variables are valid. If not return empty array
             typeof submitedAge === 'number' &&
-            typeof submitedPercentil === 'number'
+            typeof submitedPercentil === 'string'
         ) {
             for (let i = 0; i < submitedAge - 1; i++) {
                 //null required for chart.js ui. If 0 is used instead of null, chart.js will render a line

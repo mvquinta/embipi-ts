@@ -38,12 +38,12 @@ const handler: NextApiHandler = async (req, res) => {
             },
             data: {
                 userBabyName: req.body.values.userBabyName,
-                userBabyAge: req.body.values.userBabyAge,
+                userBabyBirth: req.body.values.userBabyBirth,
                 userBabyGender: req.body.values.userBabyGender,
                 userBabyMonths: req.body.babyMonths,
-                userBabyHeight: parseInt(req.body.values.userBabyHeight),
-                userBabyWeight: parseInt(req.body.values.userBabyWeight),
-                userBabyHead: parseInt(req.body.values.userBabyHead),
+                userBabyHeight: Number(req.body.values.userBabyHeight),
+                userBabyWeight: Number(req.body.values.userBabyWeight),
+                userBabyHead: Number(req.body.values.userBabyHead),
             },
         });
 
