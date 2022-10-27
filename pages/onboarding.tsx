@@ -92,7 +92,6 @@ const Onboarding: NextPage = () => {
                                         </label>
                                         <input
                                             id="userName"
-                                            //name='userName'
                                             type="text"
                                             autoComplete="userName"
                                             className="mt-1 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
@@ -130,7 +129,6 @@ const Onboarding: NextPage = () => {
                                         </label>
                                         <input
                                             id="lastName"
-                                            //name='lastName'
                                             type="text"
                                             autoComplete="lastName"
                                             className="mt-1 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
@@ -168,7 +166,6 @@ const Onboarding: NextPage = () => {
                                     </label>
                                     <input
                                         id="userBabyName"
-                                        //name='userBabyName'
                                         type="text"
                                         autoComplete="userBabyName"
                                         className="mt-1 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
@@ -204,7 +201,6 @@ const Onboarding: NextPage = () => {
                                     <div>
                                         <input
                                             id="babyGenderMale"
-                                            //name='userBabyGender'
                                             className="peer hidden"
                                             type="radio"
                                             value="male"
@@ -256,7 +252,6 @@ const Onboarding: NextPage = () => {
                                     <div>
                                         <input
                                             id="userBabyAge"
-                                            //name='userBabyAge'
                                             type="date"
                                             autoComplete="userBabyAge"
                                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm mt-2"
@@ -283,20 +278,20 @@ const Onboarding: NextPage = () => {
                                     <div className="mt-1 relative rounded-md shadow-sm">
                                         <input
                                             type="number"
-                                            //name='userBabyHeight'
                                             id="userBabyHeight"
                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                             placeholder="0.0"
+                                            step="0.1"
                                             aria-describedby="user-Baby-Height"
                                             {...register('userBabyHeight', {
                                                 required: 'Baby Height is required',
                                                 maxLength: {
-                                                    value: 3,
-                                                    message: 'Value must be max 3 characters',
+                                                    value: 5,
+                                                    message: 'Max 5 chars',
                                                 },
                                                 minLength: {
                                                     value: 2,
-                                                    message: 'Value must be min 3 characters',
+                                                    message: 'Min 2 numbers',
                                                 },
                                             })}
                                         />
@@ -325,20 +320,20 @@ const Onboarding: NextPage = () => {
                                     <div className="mt-1 relative rounded-md shadow-sm">
                                         <input
                                             type="number"
-                                            //name='userBabyWeight'
                                             id="userBabyWeight"
                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                             placeholder="0.0"
+                                            step="0.1"
                                             aria-describedby="user-Baby-Weight"
                                             {...register('userBabyWeight', {
                                                 required: 'Baby Weight is required',
                                                 maxLength: {
-                                                    value: 2,
-                                                    message: 'Value must be max 2 characters',
+                                                    value: 4,
+                                                    message: 'Max 3 numbers',
                                                 },
                                                 minLength: {
                                                     value: 1,
-                                                    message: 'Value must be min 1 characters',
+                                                    message: 'Min 1 number',
                                                 },
                                             })}
                                         />
@@ -368,20 +363,20 @@ const Onboarding: NextPage = () => {
                                     <div className="mt-1 relative rounded-md shadow-sm">
                                         <input
                                             type="number"
-                                            //name='userBabyHead'
                                             id="userBabyHead"
                                             className="focus:ring-teal-500 focus:border-teal-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
                                             placeholder="0.0"
+                                            step="0.1"
                                             aria-describedby="user-Baby-Head"
                                             {...register('userBabyHead', {
                                                 required: 'Baby Head is required',
                                                 maxLength: {
-                                                    value: 3,
-                                                    message: 'Value must be max 3 characters',
+                                                    value: 5,
+                                                    message: 'Max 5 chars',
                                                 },
                                                 minLength: {
                                                     value: 2,
-                                                    message: 'Value must be min 3 characters',
+                                                    message: 'Min 2 numbers',
                                                 },
                                             })}
                                         />

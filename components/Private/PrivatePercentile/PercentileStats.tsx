@@ -45,7 +45,7 @@ export const PercentileStats: NextPage<Props> = ({ child, percentileValues }) =>
                                 {item.name}
                             </dt>
                             <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
-                                {item.userBabyStat}
+                                {item.userBabyStat as any}
                             </dd>
                             <dd className="mt-1 text-base font-semibold tracking-tight text-gray-900">
                                 WHO: {item.stat}

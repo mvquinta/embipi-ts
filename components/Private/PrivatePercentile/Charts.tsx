@@ -4,6 +4,7 @@ import axios from 'axios';
 import { LineChart } from '@/components/index';
 import { useUtils } from '@/lib/utils';
 import { Loader } from '@/components/index';
+import { Prisma } from '@prisma/client';
 import { UserChildren } from 'types/types';
 
 type Props = {
@@ -14,16 +15,16 @@ type Props = {
 type Response = {
     gender: string;
     data: {
-        height: number;
-        weight: number;
-        head: number;
+        height: Prisma.Decimal;
+        weight: Prisma.Decimal;
+        head: Prisma.Decimal;
     };
 };
 
 export const Charts: NextPage<Props> = ({ percentileType, child }) => {
     const utils = useUtils();
     const [loading, setLoading] = useState<boolean>(false);
-    const [percentilesValues, setPercentilesValues] = useState(0);
+    const [percentilesValues, setPercentilesValues] = useState<Prisma.Decimal | number>(0);
     const [lineChartPercentil, setLineChartPercentil] = useState<Array<number | null>>([]);
     const babyAgeMonths = child ? child[0].userBabyMonths : 0;
 
@@ -62,22 +63,22 @@ export const Charts: NextPage<Props> = ({ percentileType, child }) => {
     }, [child, percentileType]);
 
     useEffect(() => {
-        let babyPercentil = 0;
+        let babyPercentil: Prisma.Decimal | number = 0;
         let percentilDataArray = [];
 
         switch (percentileType) {
             case 'height':
-                babyPercentil = child ? child[0].userBabyHeight : 0;
+                babyPercentil = child ? child[0].userBabyHeight : 0.0;
                 percentilDataArray = utils.getPercentilValue(babyAgeMonths, babyPercentil);
                 setLineChartPercentil(percentilDataArray);
                 break;
             case 'weight':
-                babyPercentil = child ? child[0].userBabyWeight : 0;
+                babyPercentil = child ? child[0].userBabyWeight : 0.0;
                 percentilDataArray = utils.getPercentilValue(babyAgeMonths, babyPercentil);
                 setLineChartPercentil(percentilDataArray);
                 break;
             case 'head':
-                babyPercentil = child ? child[0].userBabyHead : 0;
+                babyPercentil = child ? child[0].userBabyHead : 0.0;
                 percentilDataArray = utils.getPercentilValue(babyAgeMonths, babyPercentil);
                 setLineChartPercentil(percentilDataArray);
                 break;

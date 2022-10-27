@@ -29,9 +29,9 @@ type FormValues = {
     userBabyName: string;
     userBabyGender: string;
     userBabyAge: Date | string;
-    userBabyHeight: number | string;
-    userBabyWeight: number | string;
-    userBabyHead: number | string;
+    userBabyHeight: Prisma.Decimal | number;
+    userBabyWeight: Prisma.Decimal | number;
+    userBabyHead: Prisma.Decimal | number;
 };
 
 type CheckedGender = {

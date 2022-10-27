@@ -5,15 +5,19 @@ import { BiChevronDown } from 'react-icons/bi';
 const faqs = [
     {
         question: "What's percentile? What are all these values?",
-        answer: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        answer: "These charts shows how your baby's size compares with other kids of the same age. The Y axis are the values and the X axis your baby age in months. As an example, if your baby positions under curve 50th, it means he weights less than the majority",
+    },
+    {
+        question: 'Should I be worried if my child percentile values are too low? Or to high?',
+        answer: 'Do not worry if your baby is not right in the middle. The normal range is very wide and these measurements do not reflect exactly how your baby will be as an adult.',
+    },
+    {
+        question: 'And the data for the charts?',
+        answer: 'These charts are built with data provided by WHO - World Health Organization for children under age 3',
     },
     {
         question: "What's is WHO - World Health Organization?",
         answer: 'Founded in 1948, WHO is the United Nations agency that connects nations, partners and people to promote health, keep the world safe and serve the vulnerable so everyone, everywhere can attain the highest level of health. WHO leads global efforts to expand universal health coverage. We direct and coordinate the world’s response to health emergencies. And we promote healthier lives from pregnancy care through old age. (text from WHO official site)',
-    },
-    {
-        question: 'Should I be worried if my child percentile values are too low? Or to high?',
-        answer: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
     },
 ];
 
