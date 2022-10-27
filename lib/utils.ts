@@ -22,7 +22,7 @@ export const useUtils = () => {
         if (
             //checks if variables are valid. If not return empty array
             typeof submitedAge === 'number' &&
-            typeof submitedPercentil === 'number'
+            typeof submitedPercentil === 'string'
         ) {
             for (let i = 0; i < submitedAge - 1; i++) {
                 //null required for chart.js ui. If 0 is used instead of null, chart.js will render a line

@@ -73,12 +73,12 @@ model Children {
   author   User @relation(fields: [authorId], references: [id])
   authorId String @unique
   userBabyName String
-  userBabyAge String
+  userBabyBirth String
   userBabyGender String
   userBabyMonths Int 
-  userBabyHeight Decimal //This should be changed to a decimal
-  userBabyWeight Decimal //This should be changed to a decimal
-  userBabyHead Decimal //This should be changed to a decimal
+  userBabyHeight Decimal 
+  userBabyWeight Decimal 
+  userBabyHead Decimal
   milestones Milestones[]
 }
 

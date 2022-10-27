@@ -28,7 +28,7 @@ type FormValues = {
     email: string;
     userBabyName: string;
     userBabyGender: string;
-    userBabyAge: Date | string;
+    userBabyBirth: Date | string;
     userBabyHeight: Prisma.Decimal | number;
     userBabyWeight: Prisma.Decimal | number;
     userBabyHead: Prisma.Decimal | number;

@@ -37,7 +37,7 @@ const Onboarding: NextPage = () => {
     }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        let babyMonths = utils.ageInMonths(data.userBabyAge as Date);
+        let babyMonths = utils.ageInMonths(data.userBabyBirth as Date);
 
         const submit = async () => {
             await axios.post('/api/onboarding', { data, babyMonths });
@@ -251,17 +251,17 @@ const Onboarding: NextPage = () => {
                                     </div>
                                     <div>
                                         <input
-                                            id="userBabyAge"
+                                            id="userBabyBirth"
                                             type="date"
-                                            autoComplete="userBabyAge"
+                                            autoComplete="userBabyBirth"
                                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm mt-2"
-                                            {...register('userBabyAge', {
+                                            {...register('userBabyBirth', {
                                                 required: 'You must insert your baby age',
                                             })}
                                         />
-                                        {errors.userBabyAge && (
+                                        {errors.userBabyBirth && (
                                             <span className="text-red-500">
-                                                {errors.userBabyAge.message}
+                                                {errors.userBabyBirth.message}
                                             </span>
                                         )}
                                     </div>

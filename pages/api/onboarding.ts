@@ -31,7 +31,7 @@ const handler: NextApiHandler = async (req, res) => {
         await prisma.children.create({
             data: {
                 userBabyName: req.body.data.userBabyName,
-                userBabyAge: req.body.data.userBabyAge,
+                userBabyBirth: req.body.data.userBabyBirth,
                 userBabyGender: req.body.data.userBabyGender,
                 userBabyMonths: req.body.babyMonths,
                 userBabyHeight: Number(req.body.data.userBabyHeight),

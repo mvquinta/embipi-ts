@@ -38,7 +38,7 @@ const handler: NextApiHandler = async (req, res) => {
             },
             data: {
                 userBabyName: req.body.values.userBabyName,
-                userBabyAge: req.body.values.userBabyAge,
+                userBabyBirth: req.body.values.userBabyBirth,
                 userBabyGender: req.body.values.userBabyGender,
                 userBabyMonths: req.body.babyMonths,
                 userBabyHeight: Number(req.body.values.userBabyHeight),

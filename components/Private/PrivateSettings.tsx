@@ -59,8 +59,8 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
         if (data.userBabyName === '') {
             data.userBabyName = child[0].userBabyName;
         }
-        if (data.userBabyAge === '') {
-            data.userBabyAge = child[0].userBabyAge;
+        if (data.userBabyBirth === '') {
+            data.userBabyBirth = child[0].userBabyBirth;
         }
         if (data.userBabyGender === '') {
             data.userBabyGender = child[0].userBabyGender;
@@ -79,7 +79,7 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
     };
 
     const submitForm: SubmitHandler<FormValues> = async (values) => {
-        let babyMonths = utils.ageInMonths(values.userBabyAge as Date);
+        let babyMonths = utils.ageInMonths(values.userBabyBirth as Date);
 
         async function updateSettings() {
             try {
@@ -113,7 +113,7 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
             email: user ? (user.email as string) : '',
             userBabyName: child ? child[0].userBabyName : '',
             //userBabyGender: setChecked,
-            userBabyAge: child ? child[0].userBabyAge : '',
+            userBabyBirth: child ? child[0].userBabyBirth : '',
             userBabyHeight: child ? child[0].userBabyHeight : 0,
             userBabyWeight: child ? child[0].userBabyWeight : 0,
             userBabyHead: child ? child[0].userBabyHead : 0,
@@ -386,22 +386,22 @@ export const PrivateSettings: NextPage<Props> = ({ user, child }) => {
 
                                                     <div>
                                                         <input
-                                                            id="userBabyAge"
+                                                            id="userBabyBirth"
                                                             type="text"
-                                                            autoComplete="userBabyAge"
+                                                            autoComplete="userBabyBirth"
                                                             defaultValue={
-                                                                child ? child[0]?.userBabyAge : ''
+                                                                child ? child[0]?.userBabyBirth : ''
                                                             }
                                                             onFocus={(e) => {
                                                                 e.currentTarget.type = 'date';
                                                                 e.currentTarget.focus();
                                                             }}
                                                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm mt-2"
-                                                            {...register('userBabyAge')}
+                                                            {...register('userBabyBirth')}
                                                         />
-                                                        {errors.userBabyAge && (
+                                                        {errors.userBabyBirth && (
                                                             <span className="text-red-500">
-                                                                {errors.userBabyAge.message}
+                                                                {errors.userBabyBirth.message}
                                                             </span>
                                                         )}
                                                     </div>
