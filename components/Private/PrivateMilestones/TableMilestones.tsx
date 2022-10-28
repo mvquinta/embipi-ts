@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { ActiveMilestone } from 'types/types';
 import { BiChevronDown } from 'react-icons/bi';
-import MilestonesDropdown from '@/components/Milestones/MilestonesDropdown';
+import { MilestonesDropdown } from '@/components/index';
 
 type Props = {
     activeMilestones: ActiveMilestone[];
@@ -20,7 +20,7 @@ function classNames(...classes: string[]): string {
     return classes.filter(Boolean).join(' ');
 }
 
-const TableMilestones: NextPage<Props> = ({
+export const TableMilestones: NextPage<Props> = ({
     activeMilestones,
     handleUpdateMilestoneStatus,
     handleMonthDropDown,

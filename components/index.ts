@@ -5,13 +5,15 @@ export { MainLayout } from '@/components/Commons/MainLayout';
 export { Navbar } from '@/components/Commons/Navbar';
 export { Sidebar } from '@/components/Commons/Sidebar';
 export { Welcomebar } from '@/components/Commons/Welcomebar';
-export { ModalAlert } from '@/components/Commons/ModalAlert';
+export { ModalDelete } from '@/components/Commons/ModalDelete';
 export { Favicon } from '@/components/Commons/Favicon';
+export { FormSettings } from '@/components/Commons/Forms/FormSettings';
+export { DeleteAccount } from '@/components/Commons/DeleteAccount';
 
 //Private
 export { PrivateDashboard } from '@/components/Private/PrivateDashboard';
 export { PrivatePercentile } from '@/components/Private/PrivatePercentile/index';
-export { PrivateMilestones } from '@/components/Private/PrivateMilestones';
+export { PrivateMilestones } from '@/components/Private/PrivateMilestones/index';
 export { PrivateSettings } from '@/components/Private/PrivateSettings';
 
 //Percentile
@@ -22,8 +24,10 @@ export { PercentileFaqs } from '@/components/Private/PrivatePercentile/Percentil
 export { PercentileStats } from '@/components/Private/PrivatePercentile/PercentileStats';
 
 //Milestones
-export { Milestones } from '@/components/Milestones/index';
-export { MilestonesAchievedTable } from '@/components/Milestones/MilestonesAchievedTable';
+export { Milestones } from '@/components/Private/PrivateMilestones/Milestones';
+export { MilestonesAchievedTable } from '@/components/Private/PrivateMilestones/MilestonesAchievedTable';
+export { TableMilestones } from '@/components/Private/PrivateMilestones/TableMilestones';
+export { MilestonesDropdown } from '@/components/Private/PrivateMilestones/MilestonesDropdown';
 
 //Components Home
 export { Hero } from '@/components/Home/Hero';

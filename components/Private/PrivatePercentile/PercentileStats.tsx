@@ -10,21 +10,21 @@ export const PercentileStats: NextPage<Props> = ({ child, percentileValues }) =>
     const percentileStats = [
         {
             name: 'Height Percentile',
-            userBabyStat: child ? child[0]?.userBabyHeight : null,
+            userBabyStat: child ? child[0]?.userBabyHeight + ' cm' : null,
             stat: percentileValues
                 ? percentileValues[0]?.data?.height.curve50[child[0].userBabyMonths]
                 : null,
         },
         {
             name: 'Weight Percentile',
-            userBabyStat: child ? child[0].userBabyWeight : null,
+            userBabyStat: child ? child[0].userBabyWeight + ' kg' : null,
             stat: percentileValues
                 ? percentileValues[0]?.data?.weight.curve50[child[0].userBabyMonths]
                 : null,
         },
         {
             name: 'Head Percentile',
-            userBabyStat: child ? child[0].userBabyHeight : null,
+            userBabyStat: child ? child[0].userBabyHead + ' cm' : null,
             stat: percentileValues
                 ? percentileValues[0]?.data?.head.curve50[child[0].userBabyMonths]
                 : null,
@@ -44,11 +44,12 @@ export const PercentileStats: NextPage<Props> = ({ child, percentileValues }) =>
                             <dt className="truncate text-sm font-medium text-gray-500">
                                 {item.name}
                             </dt>
-                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-teal-700">
                                 {item.userBabyStat as any}
                             </dd>
                             <dd className="mt-1 text-base font-semibold tracking-tight text-gray-900">
-                                WHO: {item.stat}
+                                WHO: {item.stat}{' '}
+                                <span className="text-sm font-medium">50th curve</span>
                             </dd>
                         </div>
                     ))}

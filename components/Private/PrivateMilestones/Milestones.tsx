@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import TableMilestones from '@/components/Milestones/TableMilestones';
+import { TableMilestones } from '@/components/index';
 import { UserChildren, UserMilestones, ActiveMilestone } from 'types/types';
 import { useUtils } from '@/lib/utils';
 
