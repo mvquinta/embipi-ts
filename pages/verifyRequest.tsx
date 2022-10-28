@@ -34,6 +34,11 @@ const VerifyRequest: NextPage = () => {
                             <div className="mt-2 max-w-xl text-sm text-gray-500">
                                 <p>A sign in link has been sent to your email address.</p>
                             </div>
+                            <div className="mt-2 max-w-xl text-xs text-red-900 font-bold">
+                                <p>
+                                    If it takes to long please take a look at your junk/spam folder.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

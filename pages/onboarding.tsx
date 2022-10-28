@@ -1,4 +1,5 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { prisma } from '@/lib/prisma';
 import { FormValues } from 'types/types';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -6,10 +7,40 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useUtils } from '@/lib/utils';
-import { useSession } from 'next-auth/react';
+import { useSession, getSession } from 'next-auth/react';
 import { Loader } from '@/components/index';
+import { getUserProfile, getChild } from '@/lib/data';
 
-const Onboarding: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
+    if (!session) {
+        let user = null;
+        let child = null;
+        return {
+            props: {
+                user,
+                child,
+            },
+        };
+    }
+
+    let user = await getUserProfile(session.user.id, prisma);
+    user = JSON.parse(JSON.stringify(user));
+
+    let child = await getChild(session.user.id, prisma);
+    child = JSON.parse(JSON.stringify(child));
+
+    return {
+        props: {
+            user,
+            child,
+        },
+    };
+};
+
+const Onboarding: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
+    child,
+}) => {
     const { data: session, status } = useSession();
     const router = useRouter();
     const utils = useUtils();
@@ -29,11 +60,12 @@ const Onboarding: NextPage = () => {
         return null;
     }
 
-    if (!loading && session && session.user.name) {
+    if (!loading && session && child.length > 0) {
         router.push({
             pathname: '/private/[id]/dashboard',
             query: { id: session.user.id },
         });
+        return <Loader />;
     }
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
