@@ -2,13 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import type { NextPage, GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { FormValues } from 'types/types';
-
 import { Session } from 'next-auth';
 import { getSession, getProviders, signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Loader } from '@/components/index';
 import { MdLock } from 'react-icons/md';
+import { AiOutlineGithub } from 'react-icons/ai';
 
 export const getServerSideProps: GetServerSideProps = async (
     context: GetServerSidePropsContext,
@@ -26,7 +26,6 @@ export const getServerSideProps: GetServerSideProps = async (
     if (session && session?.user?.id) {
         return {
             redirect: {
-                //destination: `/private/${session.user.id}`,
                 destination: `/private/${session.user.id}/dashboard`,
                 permanent: false,
             },
@@ -53,6 +52,10 @@ const Signin: NextPage = () => {
     if (session) {
         router.push(`/private/${session.user.id}`);
     }
+
+    const handleGithubProvider = () => {
+        signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/onboarding` });
+    };
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         let abortController = new AbortController();
@@ -124,7 +127,6 @@ const Signin: NextPage = () => {
                                         </label>
                                         <input
                                             id="email-address"
-                                            //name='email'
                                             type="email"
                                             autoComplete="email"
                                             required
@@ -133,7 +135,7 @@ const Signin: NextPage = () => {
                                             {...register('email', {
                                                 required: 'Email is required',
                                                 pattern: {
-                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,9}$/i,
                                                     message: 'Invalid email address.',
                                                 },
                                             })}
@@ -159,15 +161,35 @@ const Signin: NextPage = () => {
                                         </span>
                                         Sign in
                                     </button>
-                                    <button
-                                        className="group relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
-                                        data-cy="back-btn"
-                                        onClick={handleBackButton}
-                                    >
-                                        Back
-                                    </button>
                                 </div>
                             </form>
+                            <div>
+                                <p className="text-center text-sm text-gray-600">
+                                    Or you use Github provider
+                                </p>
+                                <button
+                                    className="group relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                                    data-cy="back-btn"
+                                    onClick={handleGithubProvider}
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <AiOutlineGithub
+                                            className="h-5 w-5 text-white"
+                                            aria-hidden="true"
+                                        />
+                                    </span>
+                                    Github
+                                </button>
+                            </div>
+                            <div className="pt-2">
+                                <button
+                                    className="group relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                                    data-cy="back-btn"
+                                    onClick={handleBackButton}
+                                >
+                                    Back
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </>
