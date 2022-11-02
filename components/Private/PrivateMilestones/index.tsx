@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { UserProfile, UserChildren, UserMilestones } from 'types/types';
+import { UserChildren, UserMilestones } from 'types/types';
 import { Milestones } from '@/components/index';
 
 type Props = {
