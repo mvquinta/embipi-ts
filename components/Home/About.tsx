@@ -41,12 +41,12 @@ const devFaqs: Faqs[] = [
     {
         id: 2,
         question: 'What tecs are being used in embipi code?',
-        answer: "I'm using Nextjs, Tailwind, Firebase and Jest + Testing Library for testing. Though I'm refactoring my code and will start using PostgreSQL and Prisma for the backend. ",
+        answer: "I'm using Nextjs, TypeScript, Tailwind, Postgresq, Supabase, Prisma and Jest + Testing Library for testing.",
     },
     {
         id: 3,
         question: 'Current state of development?',
-        answer: 'v0.0.1 is currently online with the most minimum features. It has serious UI/UX problems (and, to no surprise, some bugs) that need to be solved before continuing development. Finished homepage, next step Dashboard. On it!',
+        answer: 'v1.0.1 MVP version. With authentication, dashboard percentile, milestones and settings',
     },
     {
         id: 4,
