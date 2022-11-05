@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Loader } from '@/components/index';
 import { MdLock } from 'react-icons/md';
-import { AiOutlineGithub } from 'react-icons/ai';
+//import { AiOutlineGithub } from 'react-icons/ai';
 
 export const getServerSideProps: GetServerSideProps = async (
     context: GetServerSidePropsContext,
@@ -53,9 +53,9 @@ const Signin: NextPage = () => {
         router.push(`/private/${session.user.id}`);
     }
 
-    const handleGithubProvider = () => {
-        signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/onboarding` });
-    };
+    // const handleGithubProvider = () => {
+    //     signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/onboarding` });
+    // };
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         let abortController = new AbortController();
@@ -163,7 +163,7 @@ const Signin: NextPage = () => {
                                     </button>
                                 </div>
                             </form>
-                            <div>
+                            {/* <div>
                                 <p className="text-center text-sm text-gray-600">
                                     Or you use Github provider
                                 </p>
@@ -180,7 +180,7 @@ const Signin: NextPage = () => {
                                     </span>
                                     Github
                                 </button>
-                            </div>
+                            </div> */}
                             <div className="pt-2">
                                 <button
                                     className="group relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"

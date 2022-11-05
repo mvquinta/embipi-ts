@@ -30,20 +30,6 @@ export const Cta: NextPage = () => {
                             </a>
                         </Link>
                     </div>
-                    <div className="ml-3 inline-flex rounded-md shadow group">
-                        <Link href="#">
-                            <a
-                                href="#cta"
-                                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-teal-600 bg-white hover:bg-teal-50"
-                                data-cy="cta-btn-demo"
-                            >
-                                Demo version
-                                <span className="tooltip-text text-white bg-gray-900 p-3 -mt-20  rounded-md hidden group-hover:block absolute text-center py-2 px-6 z-50">
-                                    In develpment
-                                </span>
-                            </a>
-                        </Link>
-                    </div>
                 </div>
             </div>
         </div>

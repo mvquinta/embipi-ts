@@ -1,8 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const VerifyRequest: NextPage = () => {
+    const router = useRouter();
+
+    const handleBackButton = () => {
+        router.push('/');
+    };
     return (
         <>
             <Head>
@@ -33,13 +39,24 @@ const VerifyRequest: NextPage = () => {
                             </h3>
                             <div className="mt-2 max-w-xl text-sm text-gray-500">
                                 <p>A sign in link has been sent to your email address.</p>
+                                <p>Sometimes it can take more than 1 minute to be sent...</p>
                             </div>
                             <div className="mt-2 max-w-xl text-xs text-red-900 font-bold">
                                 <p>
-                                    If it takes to long please take a look at your junk/spam folder.
+                                    If it goes way beyond that time please take a look at your
+                                    junk/spam folder.
                                 </p>
                             </div>
                         </div>
+                    </div>
+                    <div className="pt-2">
+                        <button
+                            className="group relative w-full flex justify-center mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                            data-cy="back-btn"
+                            onClick={handleBackButton}
+                        >
+                            Back
+                        </button>
                     </div>
                 </div>
             </div>

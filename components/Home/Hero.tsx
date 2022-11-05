@@ -160,18 +160,6 @@ export const Hero: NextPage = () => {
                                         </a>
                                     </Link>
                                 </div>
-                                <div className="mt-3 sm:mt-0 sm:ml-3 group">
-                                    <a
-                                        href="#"
-                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-700 bg-teal-100 hover:bg-teal-200 md:py-4 md:text-lg md:px-10"
-                                        data-cy="hero-a-demo"
-                                    >
-                                        Demo version
-                                        <span className="tooltip-text bg-gray-900 p-3 -mt-20 text-white rounded-md hidden group-hover:block absolute text-center py-2 px-6 z-50">
-                                            In develpment
-                                        </span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </main>
