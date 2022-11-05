@@ -30,10 +30,10 @@ const options = {
                 EmailSignin({ identifier, url, provider });
             },
         }),
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string,
-        }),
+        // GitHubProvider({
+        //     clientId: process.env.GITHUB_ID as string,
+        //     clientSecret: process.env.GITHUB_SECRET as string,
+        // }),
     ],
     pages: {
         signIn: '/signin',
